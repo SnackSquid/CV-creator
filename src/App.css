@@ -1,0 +1,20 @@
+:root {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  --light-grey: #D3D3D3;
+  --midnight-blue: #191970;
+  --orange: #FF5733;
+}
+
+.App-main {
+  display: grid;
+}
+
+.Header {
+  background-color: var(--midnight-blue);
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  font-size: 40px;
+}
