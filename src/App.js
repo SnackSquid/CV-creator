@@ -12,9 +12,9 @@ class App extends Component {
       title: 'Security Analyst',
       summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       // education section
-      school: '',
-      location: '',
-      degree: '',
+      school: 'Western Illinois University',
+      location: 'Macomb, IL',
+      degree: 'B.A. History',
 
       experience: {
         company: '',
@@ -22,10 +22,12 @@ class App extends Component {
         location: '',
         responsibilities: '',
       },
+      editing: true,
 
       experienceList: [],
     };
     this.updateCV = this.updateCV.bind(this);
+    this.editCV = this.editCV.bind(this);
   }
 
   updateCV(props) {
@@ -42,18 +44,38 @@ class App extends Component {
     });
   }
 
+  editCV(props) {
+    console.log(props)
+    const button = props.name;
+    if (button === 'startEditing') {
+      this.setState({
+        editing: true,
+      })
+    } else {
+      this.setState({
+        editing: false,
+      })
+    }                         
+  }
+
   render() {
 
     return (
       <div className='App-main'>
-        <div className='cvGenerator'>
         <Header />
-        <AboutMe onChange={this.updateCV} />
-        <WorkExperience 
+        <AboutMe
+        editing={this.state.editing} 
+        onChange={this.updateCV} />
+        <WorkExperience
+        editing={this.state.editing} 
+        onEdit={this.editCV} 
         onChange={this.updateCV} 
         onSubmit={this.submitWorkExperience} />
-        </div>
-        <CV props={this.state} />
+    
+        <CV
+        editing={this.state.editing} 
+        props={this.state}
+        onEdit={this.editCV} />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 :root {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
-  --light-grey: #D3D3D3;
+  --light-grey: #f5f5f5;
+  --grey: #d3d3d3;
   --midnight-blue: #191970;
   --orange: #FF5733;
 }
@@ -11,9 +12,6 @@
   grid-template-columns: 1fr minmax(1fr, 800px) 1fr;
 }
 
-.cvGenerator {
-  display: none;
-}
 
 .Header {
   background-color: var(--midnight-blue);
@@ -24,6 +22,52 @@
   padding: 15px;
   grid-column: 1 / 4;
   
+}
+
+.CV {
+  display: grid;
+  grid-template-columns: minmax(0, 250px) minmax(100px, 800px);
+  grid-template-rows: 40px 3fr 1fr;
+  gap: 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.edit {
+  float: right;
+}
+
+.CV:hover > .spacer > div > .edit {
+  display: block;
+}
+
+.edit:hover {
+  background-color: var(--grey);
+}
+
+
+.cvHeader {
+  grid-row: 2 / 4;
+  background-color: var(--light-grey);
+  box-sizing: border-box;
+}
+
+.headerContent {
+  grid-column: 2 / 4;
+  box-sizing: border-box;
+}
+
+.spacer {
+  grid-column: 2 / 4;
+}
+
+.title {
+  margin-top: 0px;
+}
+
+.name {
+  margin-bottom: 0px;
 }
 
 form {
@@ -56,17 +100,13 @@ button {
 }
 
 .personalDetails, .education, .workExperience {
-  grid-column: 2 / 3;
+  grid-column: 2 / 4;
   padding: 15px;
-}
-
-.CV {
-  display: grid;
-  grid-template-columns: minmax(0, 250px) minmax(100px, 800px);
-  height: 100vh;
+  box-sizing: border-box;
 }
 
 .summary {
   grid-column: 2 / 4;
+  box-sizing: border-box;
 }
 

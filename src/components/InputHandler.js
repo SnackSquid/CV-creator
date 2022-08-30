@@ -4,18 +4,16 @@ class AboutMe extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange = (event) => {
     this.props.onChange(event.target);
   };
-  handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  
   render() {
+    if (!this.props.editing) return null;
     return (
       <div className='personalDetails'>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label>Name</label>
           <input
             type='text'
@@ -42,7 +40,7 @@ class AboutMe extends Component {
           />
         </form>
 
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label>School</label>
           <input
             type='text'
@@ -85,11 +83,13 @@ class WorkExperience extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onChange(event.target);
+    this.props.onEdit(event.target);
   };
   render() {
+    if (!this.props.editing) return null;
     return (
       <div className='workExperience'>
-        <form onSubmit={this.submitWorkExperience}>
+        <form onSubmit={this.handleSubmit}>
           <label>Company</label>
           <input type='text'
             name='company'
