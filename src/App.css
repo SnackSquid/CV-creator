@@ -11,36 +11,38 @@
   grid-template-columns: 1fr minmax(1fr, 800px) 1fr;
 }
 
+.cvGenerator {
+  display: none;
+}
+
 .Header {
   background-color: var(--midnight-blue);
+  justify-content: space-between;
   color: var(--orange);
   display: flex;
   align-items: center;
   padding: 15px;
   grid-column: 1 / 4;
-  font-size: 40px;
-}
-
-.personalDetails, .education {
-  grid-column: 2 / 3;
-  padding: 15px;
+  
 }
 
 form {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  gap: 15px
 }
 
 label {
   padding: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding-left: 5px;
 }
 
 input, textarea {
   padding: 7px;
   border: 1px solid var(--light-grey);
   border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 textarea {
@@ -52,3 +54,19 @@ button {
   border-radius: 10px;
   padding: 5px;
 }
+
+.personalDetails, .education, .workExperience {
+  grid-column: 2 / 3;
+  padding: 15px;
+}
+
+.CV {
+  display: grid;
+  grid-template-columns: minmax(0, 250px) minmax(100px, 800px);
+  height: 100vh;
+}
+
+.summary {
+  grid-column: 2 / 4;
+}
+

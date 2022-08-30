@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AboutMe, WorkExperience } from './components/InputHandler';
-import { Header } from './components/StaticContent';
+import { Header, CV } from './components/StaticContent';
 import './App.css';
 
 class App extends Component {
@@ -8,17 +8,17 @@ class App extends Component {
     super(props);
     this.state = {
       // about me section
-      name: '',
-      title: '',
-      summary: '',
+      name: 'Spencer Williams',
+      title: 'Security Analyst',
+      summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       // education section
       school: '',
       location: '',
       degree: '',
 
       experience: {
-        title: '',
         company: '',
+        jobTitle: '',
         location: '',
         responsibilities: '',
       },
@@ -46,9 +46,14 @@ class App extends Component {
 
     return (
       <div className='App-main'>
+        <div className='cvGenerator'>
         <Header />
         <AboutMe onChange={this.updateCV} />
-        <WorkExperience onSubmit={this.submitWorkExperience} />
+        <WorkExperience 
+        onChange={this.updateCV} 
+        onSubmit={this.submitWorkExperience} />
+        </div>
+        <CV props={this.state} />
       </div>
     );
   }

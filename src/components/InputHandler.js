@@ -41,7 +41,7 @@ class AboutMe extends Component {
             placeholder='Enter some details about yourself'
           />
         </form>
-        <div className='education'>
+
         <form onSubmit={this.handleSubmit}>
           <label>School</label>
           <input
@@ -69,7 +69,6 @@ class AboutMe extends Component {
           />
         </form>
       </div>
-      </div>
     );
   }
 }
@@ -87,25 +86,38 @@ class WorkExperience extends Component {
     event.preventDefault();
     this.props.onChange(event.target);
   };
-  render () {
+  render() {
     return (
-      <div>
+      <div className='workExperience'>
         <form onSubmit={this.submitWorkExperience}>
-          <label>Title</label>
-          <input type='text' 
-          value={this.props.title}
-          onChange={this.handleChange}
+          <label>Company</label>
+          <input type='text'
+            name='company'
+            value={this.props.company}
+            onChange={this.handleChange}
+            placeholder='Company'
           />
-          <label>Title</label>
-          <input type='text' 
-          value={this.props.title}
-          onChange={this.handleChange}
+          <label>Job Title</label>
+          <input type='text'
+            name='jobTitle'
+            value={this.props.jobTitle}
+            onChange={this.handleChange}
           />
-          <label>Title</label>
-          <input type='text' 
-          value={this.props.title}
-          onChange={this.handleChange}
+          <label>Location</label>
+          <input type='text'
+            name='location'
+            value={this.props.location}
+            onChange={this.handleChange}
           />
+          <label>Responsibilities</label>
+          <textarea
+            type='textArea'
+            name='responsibilities'
+            onChange={this.handleChange}
+            value={this.props.responsibilities}
+            placeholder='Enter the job responsibilities'
+          />
+          <button type='submit'>Generate CV</button>
         </form>
       </div>
     );
