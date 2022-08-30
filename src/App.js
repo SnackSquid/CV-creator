@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AboutMe, Education } from './components/InputHandler';
+import { AboutMe, WorkExperience } from './components/InputHandler';
 import { Header } from './components/StaticContent';
 import './App.css';
 
@@ -34,13 +34,21 @@ class App extends Component {
     this.setState({ [name]: value });
   }
 
+  submitWorkExperience(props) {
+    const experience = props.experience;
+    this.setState({
+      experienceList:
+        this.state.experienceList.concat(experience)
+    });
+  }
+
   render() {
 
     return (
       <div className='App-main'>
         <Header />
         <AboutMe onChange={this.updateCV} />
-        <Education onChange={this.updateCV} />
+        <WorkExperience onSubmit={this.submitWorkExperience} />
       </div>
     );
   }

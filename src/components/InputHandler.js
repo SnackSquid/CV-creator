@@ -14,7 +14,7 @@ class AboutMe extends Component {
   };
   render() {
     return (
-      <div>
+      <div className='personalDetails'>
         <form onSubmit={this.handleSubmit}>
           <label>Name</label>
           <input
@@ -40,28 +40,8 @@ class AboutMe extends Component {
             value={this.props.summary}
             placeholder='Enter some details about yourself'
           />
-          <button type='submit'>Submit</button>
         </form>
-      </div>
-    );
-  }
-}
-
-class Education extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange = (event) => {
-    this.props.onChange(event.target);
-  };
-  handleSubmit = (event) => {
-    event.preventDefault();
-  };
-  render() {
-    return (
-      <div>
+        <div className='education'>
         <form onSubmit={this.handleSubmit}>
           <label>School</label>
           <input
@@ -87,11 +67,51 @@ class Education extends Component {
             value={this.props.degree}
             placeholder='Degree earned'
           />
-          <button type='submit'>Submit</button>
+        </form>
+      </div>
+      </div>
+    );
+  }
+}
+
+class WorkExperience extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange = (event) => {
+    this.props.onChange(event.target);
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onChange(event.target);
+  };
+  render () {
+    return (
+      <div>
+        <form onSubmit={this.submitWorkExperience}>
+          <label>Title</label>
+          <input type='text' 
+          value={this.props.title}
+          onChange={this.handleChange}
+          />
+          <label>Title</label>
+          <input type='text' 
+          value={this.props.title}
+          onChange={this.handleChange}
+          />
+          <label>Title</label>
+          <input type='text' 
+          value={this.props.title}
+          onChange={this.handleChange}
+          />
         </form>
       </div>
     );
   }
 }
 
-export { AboutMe, Education };
+
+
+export { AboutMe, WorkExperience };
