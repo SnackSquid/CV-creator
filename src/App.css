@@ -29,7 +29,6 @@
   grid-template-columns: minmax(0, 250px) minmax(100px, 800px);
   grid-template-rows: 40px 3fr 1fr;
   gap: 20px;
-  padding: 15px;
   box-sizing: border-box;
   height: 100vh;
 }
@@ -48,8 +47,9 @@
 
 
 .cvHeader {
-  grid-row: 2 / 4;
+  grid-row: 1 / 4;
   background-color: var(--light-grey);
+  padding-left: 15px;
   box-sizing: border-box;
 }
 
@@ -60,6 +60,7 @@
 
 .spacer {
   grid-column: 2 / 4;
+  padding: 15px;
 }
 
 .title {
@@ -97,10 +98,16 @@ button {
   border: none;
   border-radius: 10px;
   padding: 5px;
+  margin-top: 15px;
+  max-width: 200px;
+}
+
+p {
+  margin: 2px;
 }
 
 .personalDetails, .education, .workExperience {
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
   padding: 15px;
   box-sizing: border-box;
 }

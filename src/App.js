@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AboutMe, WorkExperience } from './components/InputHandler';
-import { Header, CV } from './components/StaticContent';
+import { CV } from './components/CVBuilder';
 import './App.css';
 
 class App extends Component {
@@ -15,19 +15,19 @@ class App extends Component {
       school: 'Western Illinois University',
       location: 'Macomb, IL',
       degree: 'B.A. History',
-
-      experience: {
-        company: '',
-        jobTitle: '',
-        location: '',
-        responsibilities: '',
-      },
       editing: true,
-
-      experienceList: [],
+      experienceList: [
+        {company: 'Shmeep Co',
+        jobTitle: 'Junior Web Developer',
+        location: 'Chicago',
+        responsibilities: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do',
+        key: 0,
+      }
+      ],
     };
     this.updateCV = this.updateCV.bind(this);
     this.editCV = this.editCV.bind(this);
+    this.submitWorkExperience = this.submitWorkExperience.bind(this);
   }
 
   updateCV(props) {
@@ -37,15 +37,19 @@ class App extends Component {
   }
 
   submitWorkExperience(props) {
-    const experience = props.experience;
-    this.setState({
-      experienceList:
-        this.state.experienceList.concat(experience)
-    });
+    const index = this.state.experienceList.length;
+    const experience = {
+      company: props[0].value,
+      jobTitle: props[1].value,
+      location: props[2].value,
+      responsibilities: props[3].value,
+      key: index,
+    };
+  
+    this.setState({ experienceList: this.state.experienceList.concat(experience) });
   }
 
   editCV(props) {
-    console.log(props)
     const button = props.name;
     if (button === 'startEditing') {
       this.setState({
@@ -58,11 +62,20 @@ class App extends Component {
     }                         
   }
 
-  render() {
+  Header() {
+    if (!this.state.editing) return null;
+    return (
+      <div className='Header'>
+        <h1>CV Maker+</h1>
+      </div>
+    )
+  }
 
+  render() {
+    const header = this.Header();
     return (
       <div className='App-main'>
-        <Header />
+        {header}
         <AboutMe
         editing={this.state.editing} 
         onChange={this.updateCV} />

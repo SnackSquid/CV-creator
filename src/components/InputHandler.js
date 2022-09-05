@@ -13,6 +13,7 @@ class AboutMe extends Component {
     if (!this.props.editing) return null;
     return (
       <div className='personalDetails'>
+        <h2>Personal Details</h2>
         <form>
           <label>Name</label>
           <input
@@ -39,7 +40,7 @@ class AboutMe extends Component {
             placeholder='Enter some details about yourself'
           />
         </form>
-
+        <h2>Education</h2>
         <form>
           <label>School</label>
           <input
@@ -82,43 +83,45 @@ class WorkExperience extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onChange(event.target);
     this.props.onEdit(event.target);
+  };
+  handleWorkExperience = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(event.target);
+    event.target.reset();
+
   };
   render() {
     if (!this.props.editing) return null;
     return (
       <div className='workExperience'>
-        <form onSubmit={this.handleSubmit}>
+        <h2>Work Experience</h2>
+        <form onSubmit={this.handleWorkExperience}>
           <label>Company</label>
           <input type='text'
             name='company'
-            value={this.props.company}
-            onChange={this.handleChange}
             placeholder='Company'
           />
           <label>Job Title</label>
           <input type='text'
             name='jobTitle'
-            value={this.props.jobTitle}
-            onChange={this.handleChange}
           />
           <label>Location</label>
           <input type='text'
             name='location'
-            value={this.props.location}
-            onChange={this.handleChange}
           />
           <label>Responsibilities</label>
           <textarea
             type='textArea'
             name='responsibilities'
-            onChange={this.handleChange}
-            value={this.props.responsibilities}
             placeholder='Enter the job responsibilities'
           />
-          <button type='submit'>Generate CV</button>
+          <button type='submit'>Add Work Experience</button>
         </form>
+        <div>
+        <button type='submit'
+        onClick={this.handleSubmit}>Generate CV</button>
+        </div>
       </div>
     );
   }
